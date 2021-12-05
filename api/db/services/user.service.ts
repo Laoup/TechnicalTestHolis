@@ -36,8 +36,11 @@ export const updateById = (id: number, payload: Partial<UserInput>): Promise<Use
 	return userDal.updateUser(id, payload)
 }
 
-export const getById = (id: number): Promise<UserOutput> => {
-	return userDal.getUserById(id)
+export const getById = async (id: number): Promise<UserOutput> => {
+	const user: UserOutput | null = await userDal.getUserById(id)
+	if (!user)
+		throw new NotFound("Aucun utilisateur n'a été trouvé")
+	return user
 }
 
 export const getByEmail = async (email: string): Promise<UserOutput> => {

@@ -1,0 +1,6 @@
+// Add option horizontal / vertical on fields
+.field.is-vertical {
+	.has-addons {
+		flex-direction: column;
+	}
+}

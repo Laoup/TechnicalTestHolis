@@ -2,6 +2,7 @@ import { ErrorRequestHandler, Request, Response, NextFunction } from "express"
 import _ from 'lodash'
 import schemas from '@schemas/index'
 import { GeneralError, Unauthorized } from '@utils/error'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 
 export const middleware_error_handler = (err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {
 	if (err instanceof GeneralError) {
@@ -24,7 +25,7 @@ export const middleware_schema_validator = (req: Request, res: Response, next: N
 			const schema = _.get(schemas, route)
 
 			console.log(req.body)
-			const { error, value } = schema.validate(req.body)
+			const { error, value } = schema.validate(req.body, { allowUnknown: true })
 
 			if (error === undefined) {
 				req.body = value
@@ -46,6 +47,9 @@ export const middleware_verify_token = async (req: Request, res: Response, next:
 		if (!cookies || !cookies.access_token)
 			throw new Unauthorized('Missing access token in cookie');
 		const accessToken = cookies.access_token;
+
+		const decodedToken: JwtPayload = jwt.decode(accessToken) as JwtPayload
+		req.body.decoded = decodedToken
 
 		next()
 	} catch(e) {

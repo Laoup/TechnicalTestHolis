@@ -6,6 +6,8 @@ import cookieParser from 'cookie-parser'
 import { API_PORT, FRONT_CLIENT_URL } from '@utils/config'
 import dbInit from './db/init'
 import routerSign from '@routes/sign.routes'
+import routerScore from '@routes/score.routes'
+import { middleware_error_handler, middleware_verify_token } from '@middlewares/index'
 
 dbInit()
 
@@ -22,6 +24,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(routerSign)
+app.use([middleware_verify_token], routerScore)
+
+app.use(middleware_error_handler)
 
 app.listen(API_PORT, () => {
 	console.log(`api started and listen the port ${API_PORT}`)

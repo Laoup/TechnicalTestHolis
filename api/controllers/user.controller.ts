@@ -18,10 +18,11 @@ export const update = async (id: number, payload: UpdateUserDTO): Promise<UserIn
 
 export const authenticateJWT = wrapAsync(async (req: Request, res: Response) => {
 	const { email, password } = req.body
-
+	
 	const user: UserInterface = mapperUser.toUser(await serviceUser.getByEmail(email))
 	await serviceUser.authenticateUser(user.password, password)
 	const jwt: string = serviceTokens.createJWT(user)
+	console.log(jwt)
 	res.cookie('access_token', jwt, {
 		// Validity 2 hours
 		maxAge: 7200000,

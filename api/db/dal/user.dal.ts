@@ -13,9 +13,8 @@ export const updateUser = async (id: number, payload: Partial<UserInput>): Promi
 	return updatedUser
 }
 
-export const getUserById = async (id: number): Promise<UserOutput> => {
+export const getUserById = async (id: number): Promise<UserOutput | null> => {
 	const user = await User.findByPk(id)
-	if (!user) throw new NotFound('Utilisateur introuvable')
 	return user
 }
 
@@ -25,7 +24,6 @@ export const getUserByEmail = async (email: string): Promise<UserOutput | null>
 			email
 		}
 	})
-	if (!user) throw new NotFound('Utilisateur introuvable')
 	return user
 }
 

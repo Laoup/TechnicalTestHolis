@@ -6,7 +6,7 @@ export const create = async (req: Request): Promise<boolean> => {
 	const { body } = req
 
 	const newScore: ScoreInput = {
-		fk_userId: body.userId,
+		fk_userId: body.decoded.userId,
 		score: body.score
 	}
 	return !!(await scoreDal.createScore(newScore))
