@@ -1,6 +1,6 @@
 import joi from 'joi'
 
-export const stringValidator = joi.string().regex(/^[A-Z]+$/i)
+export const stringValidator = joi.string().regex(/^[A-Z ']+$/i)
 export const numberValidator = joi.number()
 export const emailValidator = joi.string().email()
 export const passwordValidator = joi.string().min(7).required()

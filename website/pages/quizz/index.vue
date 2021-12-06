@@ -1,18 +1,27 @@
 <template lang="">
-	<section
-		class="is-flex
-		is-flex-wrap-wrap
-		is-align-items-flex-start
-		has-background-link"
-	>
-		<CardQuizz
-			v-for="quizz in allQuizz"
-			:key="quizz.id"
-			:title="quizz.title"
-			:id="quizz.id"
-			class="mx-4"
-		/>
-	</section>
+	<article class="py-5 px-4">
+		<h3 class="title is-5 mb-4 has-text-white">Choisissez un thème:</h3>
+		<section
+			class="is-flex
+			is-flex-wrap-wrap
+			is-align-items-flex-start
+			has-background-link"
+		>
+			<CardQuizz
+				v-for="quizz in allQuizz"
+				:key="quizz.id"
+				:title="quizz.title"
+				:id="quizz.id"
+				class="mx-4 has-cursor-pointer has-hover"
+			/>
+		</section>
+		<section class="has-text-white">
+			<div>
+				<h6>Vos scores précédents</h6>
+			</div>
+			<TabScore />
+		</section>
+	</article>
 </template>
 
 <script lang="ts">

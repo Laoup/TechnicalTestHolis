@@ -1,6 +1,6 @@
 <template lang="">
-	<section class="has-background-link">
-		<h4>{{ quizz.title }}</h4>
+	<section class="has-background-link px-6 py-4">
+		<h4 class="title is-5 has-text-white has-text-centered">Quizz: {{ quizz.title }}</h4>
 		<ValidationObserver v-slot="{ handleSubmit }">
 			<form @submit.prevent="handleSubmit(onSubmit())">
 				<QuestionDisplayer
@@ -8,8 +8,9 @@
 					:key="index"
 					:objQuestion="question"
 					:userAnswer.sync="answers[index]"
+					class="mb-3"
 				/>
-				<div>
+				<div class="has-text-centered">
 					<b-button
 						native-type="submit"
             type="is-success is-light"
@@ -47,12 +48,14 @@ export default class QuizzGamePage extends Vue {
 
 	onSubmit () {
 		let score: number = 0
+		const quizzTitle: string = this.quizz.title
 		this.answers.forEach((answer, index) => {
 			if (answer === this.quizz.questions[index].correct_answer)
 				score += 1
 		})
 		this.$axios.post('/addScore', {
-			score
+			score,
+			quizzTitle
 		}, {
 			withCredentials: true
 		}).then(() => {
@@ -67,7 +70,8 @@ export default class QuizzGamePage extends Vue {
 						`Votre score est de ${score} / 3 bonnes réponses.`,
 						'',
 						'Vous allez ếtre redirigé vers le menu des quizz dans quelques instants.'
-					]
+					],
+					waitingTime: 6000
 				}
 			})
 			this.$router.push('/quizz')

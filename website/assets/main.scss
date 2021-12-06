@@ -4,3 +4,21 @@
 		flex-direction: column;
 	}
 }
+
+.has-cursor-pointer {
+	cursor: pointer;
+}
+
+.has-hover {
+	&:hover {
+		border: 1px solid black;
+	}
+}
+
+html {
+	overflow-y: hidden;
+}
+
+.b-radio.radio input[type=radio] + .is-white {
+	border-color: white;
+}

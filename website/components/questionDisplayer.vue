@@ -1,6 +1,6 @@
 <template lang="">
 	<div>
-		<h5>{{ objQuestion.question }}</h5>
+		<h5 class="has-text-weight-bold">{{ objQuestion.question }}</h5>
 		<FieldRadio
 			:choices="objQuestion.answers"
 			:model.sync="model"

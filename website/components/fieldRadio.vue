@@ -1,6 +1,6 @@
 <template lang="">
 	<ValidationProvider :rules="rules" >
-		<b-field :label="label" :class="{ 'is-vertical' : vertical }">
+		<b-field :class="{ 'is-vertical' : vertical }">
 			<b-radio
 				v-for="elem in choices"
 				:key="elem"
@@ -25,9 +25,8 @@ export default class FieldRadio extends Vue {
 	@Prop({ default: '' }) rules!: string
 	@PropSync('model', { required: true }) value!: string
 	@Prop({ required: true }) name!: string
-	@Prop({ default: 'is-black' }) type!: string
+	@Prop({ default: 'is-white' }) type!: string
 	@Prop({ required: true }) choices!: string[]
-	// @Prop({ required: true }) label!: string
 	@Prop({ default: false }) vertical!: boolean
 }
 </script>

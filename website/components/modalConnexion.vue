@@ -16,6 +16,7 @@
 								v-model="password"
 								label="Password"
 								rules="required"
+								type="password"
 							/>
 						</div>
 					</div>
@@ -50,6 +51,7 @@ export default class ModalConnexion extends Vue {
 			email, password
 		}, { withCredentials: true }).then(() => {
 			this.$router.push('/quizz')
+			this.$emit('close')
 		}).catch(e => {
 			console.log(e)
 		})

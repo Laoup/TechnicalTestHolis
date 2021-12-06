@@ -28,6 +28,7 @@
                 v-model="password"
                 label="Password"
                 rules="required"
+                type="password"
               />
             </div>
           </div>

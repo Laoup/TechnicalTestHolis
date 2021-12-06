@@ -18,10 +18,11 @@ export default class ModalMessage extends Vue {
   @Prop({ default: [] }) messages!: string[]
   @Prop({ default: null }) icon!: string
   @Prop({ default: 'is-success' }) iconType!: string
+  @Prop({ default: 3000 }) waitingTime!: number
 
   async mounted () {
     const delay = new Promise<void>((resolve) => {
-      setTimeout(() => { resolve() }, 2000)
+      setTimeout(() => { resolve() }, this.waitingTime)
     })
     await delay
     this.$emit('close')

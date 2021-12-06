@@ -40,12 +40,17 @@ export default {
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://localhost:8000'
+  },
+
+  router: {
+    middleware: 'userAuth'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

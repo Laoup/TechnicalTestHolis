@@ -7,12 +7,13 @@ export const create = async (req: Request): Promise<boolean> => {
 
 	const newScore: ScoreInput = {
 		fk_userId: body.decoded.userId,
+		quizzTitle: body.quizzTitle,
 		score: body.score
 	}
 	return !!(await scoreDal.createScore(newScore))
 }
 
 export const getScoreByUserId = async (req: Request): Promise<ScoreOutput[]> => {
-	const { userId } = req.body
+	const { userId } = req.body.decoded
 	return await scoreDal.getScoreByUserId(userId)
 }

@@ -10,7 +10,7 @@ router.route('/addScore')
 })
 
 router.route('/getScore')
-.get(middleware_schema_validator, (req: Request, res: Response, next: NextFunction) => {
+.get((req: Request, res: Response, next: NextFunction) => {
 	controllerScore.getScoreByUserId(req, res, next)
 })
 
