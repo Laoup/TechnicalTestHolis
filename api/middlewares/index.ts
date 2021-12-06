@@ -24,7 +24,6 @@ export const middleware_schema_validator = (req: Request, res: Response, next: N
 		{
 			const schema = _.get(schemas, route)
 
-			console.log(req.body)
 			const { error, value } = schema.validate(req.body, { allowUnknown: true })
 
 			if (error === undefined) {

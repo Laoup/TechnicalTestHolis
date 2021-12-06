@@ -20,7 +20,6 @@ import ModalInscription from '~/components/modalInscription.vue'
 @Component
 export default class HomePage extends Vue {
   connect () {
-    console.log('connect')
     this.$buefy.modal.open({
       parent: this,
       component: ModalConnexion,
@@ -29,7 +28,6 @@ export default class HomePage extends Vue {
   }
 
   subscribe () {
-    console.log('subscribe')
     this.$buefy.modal.open({
       parent: this,
       component: ModalInscription,

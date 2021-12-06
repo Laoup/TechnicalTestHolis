@@ -37,8 +37,6 @@ export default class QuizzPage extends Vue {
     axios.get('/quizz', {
 			baseURL: 'http://my-json-server.typicode.com/Laoup/QuizzOnlineApi'
 		}).then((res: AxiosResponse) => {
-			console.log("In the answer")
-			console.log(res.data)
 			this.allQuizz = res.data
 		})
   } 
