@@ -1,5 +1,15 @@
 # TechnicalTestHolis
 
+## Sujet
+
+Design and develop an HTML5/JS app allowing the user to answer a quiz and display the results
+
+Main features:
+Select a quiz
+Answer the questions
+Display the result
+Display the previous results
+
 ## API
 
 1-> Aller dans le répertoire /api et entrez dans le terminal la commande  
